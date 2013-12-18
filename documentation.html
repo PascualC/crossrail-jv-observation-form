@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crossrail JV Observation Form</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html"><h1><img src="images/crossrail_logo_small.png" alt="Crossrail" longdesc="Crossrail"></h1></a>
+        <a href="index.html"><h1>Crossrail JV<br>
+        Observation Form</h1></a>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/csjv/crossrail-jv-observation-form">View the Project on GitHub <small>csjv/crossrail-jv-observation-form</small></a></p>
+
+        <p class="view"><a href="documentation.html">View the Project Documentation</a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/csjv/crossrail-jv-observation-form/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/csjv/crossrail-jv-observation-form/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/csjv/crossrail-jv-observation-form">View On <strong>GitHub</strong></a></li>
+        </ul>
+        
+        
+      </header>
+      <section>
+            <h1><a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h1>
+
+            <h2><a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+            <h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+            <p>Before starting, it assumed the reader has some knowledge of the following frameworks:</p>
+
+            <ul>
+                <li>ASP.Net MVC</li>
+                <li>Javascript / jQuery / jQuery UI</li>
+                <li>Entity Framework Code First</li>
+                <li>AutoMapper</li>
+            </ul>
+
+            <h3><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Set-up</h3>
+
+            <p>
+                The project provided has been created with Visual Studio 2012, ASP.NET MVC 5, jQuery, jQuery UI 
+                and Entity Framework Code First (Using LocalDb). All external references are managed by 
+                NuGet and package restore on build is enabled.
+            </p>
+
+            <p>
+                Ensure that the start-up project is set as “Crossrail.ObservationForm.Mvc”. On first use the database 
+                will be automatically created and initialised with the required static data. More information on 
+                this can be found on tutorials about Entity Framework code first.
+            </p>
+
+            <h3>
+                <a name="setup" class="anchor" href="#setup">
+                    <span class="octicon octicon-link"></span>
+                </a>
+                Set-up (Export)
+            </h3>
+
+            <p>
+                The observation exporter provided is a C# console application ("Crossrail.ObservationForm.ExportScheduler"). It requires access to the same 
+                database as the web site, which can be configured via. the application settings:
+            </p>
+
+            <table class="pure-table pure-table-horizontal">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td valign="top">AppSettings/SiteRootUrl</td>
+                        <td>Used as the site URL root for generating the Image URLs for the export.</td>
+                    </tr>
+
+                    <tr class="pure-table-odd">
+                        <td valign="top">AppSettings/ObservationExportMailAddressTo</td>
+                        <td>A comma separated list of email addresses to send the export to.</td>
+                    </tr>
+
+                    <tr>
+                        <th colspan="2">Common settings in ExportScheduler and MVC Projects</th>
+                    </tr>
+
+                    <tr>
+                        <td valign="top">ConnectionStrings/ObservationDbContext</td>
+                        <td>The connection string to the database where the observations are located.</td>
+                    </tr>
+
+                    <tr class="pure-table-odd">
+                        <td valign="top">system.net/Mail</td>
+                        <td>This contains the SMTP server settings and from address for email sending.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                Once these settings are configured, then the ideal way to get the application running on a defined schedule is through
+                a scheduled task that can be set-up to run at defined intervals every day.
+            </p>
+
+            <h3><a name="projects" class="anchor" href="#projects"><span class="octicon octicon-link"></span></a>Projects</h3>
+
+            <table class="pure-table pure-table-horizontal">
+                <thead>
+                    <tr>
+                        <th>Project Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td valign="top">Crossrail.ObservationForm</td>
+                        <td>Original HTML prototype that uses vanilla HTML and javascript.</td>
+                    </tr>
+
+                    <tr class="pure-table-odd">
+                        <td valign="top">Crossrail.ObservationForm.DataLayer</td>
+                        <td>An entity framework code first based project that contents the application model and repository for data access.</td>
+                    </tr>
+
+                    <tr>
+                        <td valign="top">Crossrail.ObservationForm.Business</td>
+                        <td>The “core” service layer, which is responsible for co-ordination between different repositories in the data layer to encapsulate the business logic of the application. For example, the validation and image uploading logic resides here.</td>
+                    </tr>
+                    <tr class="pure-table-odd">
+                        <td valign="top">Crossrail.ObservationForm.Domain</td>
+                        <td>These are the domain objects of the application, closely mirroring the models in the data layer.</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">Crossrail.ObservationForm.Mvc</td>
+                        <td>An ASP.Net MVC 5 application which contains the controllers and views needed to see a basic view of all the observations and create an observation.</td>
+                    </tr>
+                    <tr class="pure-table-odd">
+                        <td valign="top">Crossrail.ObservationForm.ExportScheduler</td>
+                        <td>
+                            A console application used to send an export of any new observations to a designated email address as a CSV attachment. Only new observations
+                            are exported on each run of the application. 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>The Business layer is the main hub within the system.</p>
+
+            <h2><a name="modifications" class="anchor" href="#modifications"><span class="octicon octicon-link"></span></a>Modifications</h2>
+
+            <h3><a name="data-access" class="anchor" href="#data-access"><span class="octicon octicon-link"></span></a>Data Access</h3>
+
+            <p>
+                Data access for this solution for entity framework code first, to make it easier to get up and running with the project. 
+                The solution is configured to use code first migrations which allow the database schema to be easily modified and deployed to production.
+            </p>
+
+            <p>More information about entity framework can be found <a href="http://msdn.microsoft.com/en-gb/data/jj193542.aspx">here</a></p>
+
+            <h4><a name="data-access-modification" class="anchor" href="#data-access-modification"><span class="octicon octicon-link"></span></a>Modification</h4>
+            <p>You can replace this layer completely with another ORM or raw ADO.NET SQL queries, providing you can fulfil the contract of the Repository class within the DataLayer project.</p>
+
+            <h3><a name="modify-business" class="anchor" href="#modify-business"><span class="octicon octicon-link"></span></a>Modifying the form for business needs</h3>
+            <p>It is possible to add new fields to the form by modifying the “Domain” objects and “DataLayer”. If you are using the Entity Framework data layer provided, then it is possible to modify the existing database easily by using “Code First Migrations”. More information on this is available in Data Access.</p>
+
+            <p>Once you have added the correct migration, you will have to modify the domain object within “Crossrail.ObservationForm.Business” to have the same property.</p>
+
+            <p>To edit the form, modifications are required within “Crossrail.ObservationForm.Mvc”. You can modify the observation “Create” view to include your new field. The form provided has examples of the following field types for reference:</p>
+
+            <ul>
+                <li>Radio button group</li>
+                <li>Text box</li>
+                <li>Text area</li>
+                <li>Date picker</li>
+                <li>Time picker</li>
+                <li>Checkbox</li>
+            </ul>
+
+            <p>The MVC views directly related to “Observations” are:</p>
+
+            <ul>
+                <li>Views/Observations/AdminDetails – A tabular list of observations</li>
+                <li>Views/Observations/Create – The main view for creating an observation</li>
+                <li>Views/Observations/Edit – The main view for editing an observation</li>
+                <li>Views/Observations/Index – Landing page for the observations section</li>
+                <li>Views/Observations/Thanks – Landing page for a successful submission</li>
+                <li>Views/ObservationsMailer/Details – The template for the observation email</li>
+            </ul>
+
+            <p>The relevant views will need editing to ensure that your field is displayed in all applicable areas. Now that the field is added to the view, the field should be persisted without any further work. </p>
+
+
+            <h4><a name="modify-business-validation" class="anchor" href="#modify-business-validation"><span class="octicon octicon-link"></span></a>Validation</h4>
+            <p>The validation for the observation is currently shared between the service layer and the domain data annotations to provide an easy way of validating simple fields and the ability to validate more complex rules.</p>
+
+            <p>The rules can be seen via:</p>
+
+            <ul>
+                <li>Domain – data attributes</li>
+                <li>Business – ObservationService.Validate – performs more complex validation, such as “if this field is x, then other field must be y”</li>
+            </ul>
+
+            <p>The domain is set-up up for “required if” fields to be “required” which is makes the domain validation alone incorrect, but when combined with the service layer the extra validation messages are removed.</p>
+
+            <p>To add simple validation, the Domain object itself can be modified. If more complex validation is required, then modifying the “ObservationService.Validate” method will be more appropriate.</p>
+
+            <h3><a name="external-integration" class="anchor" href="#external-integration"><span class="octicon octicon-link"></span></a>How to integrate the form with an external web service/database</h3>
+            <p>To use an existing web service for data storage instead of the provided database, all dependencies on “Crossrail.ObservationForm.DataLayer” would need to be removed, and the missing gaps provided by the web service.</p>
+            <p>It is recommended that the consumption of the external web service is contained within a separate project and then called directly in the business layer of the application.</p>
+
+            <h3><a name="ssl-security" class="anchor" href="#ssl-security"><span class="octicon octicon-link"></span></a>How to secure the form using SSL encryption</h3>
+            
+            <p>
+                The web form allows anonymous submissions and does not contain any public URLs to view the list
+                of observations within the system. Therefore, there is no real requirement to use HTTPS/SSL unless there is a 
+                requirement to prevent gaining the observation data through network packet sniffing.
+            </p>
+            <p>
+                If SSL is required, it is the responsibility of the hosting provider to enable this.
+            </p>
+
+            <h3>
+                Publically available content
+            </h3>
+
+            <p>
+                The only part of the system that is publically available without authentication is the images associated
+                with the observations, given that the URLs for the images are embedded within the CSV, therefore being a current
+                requirement that these remain public.
+            </p>
+        </section>
+      <footer>
+      
+        <p>This project is maintained by <a href="https://github.com/3squared">3Squared Ltd</a></p>        
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
