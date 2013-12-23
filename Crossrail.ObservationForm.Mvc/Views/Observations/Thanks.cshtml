@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Thanks";
+}
+
+<div class="content-thanks">
+    <p>
+        @ViewBag.Thanks
+    </p>
+</div>
+<div class="content-block">
+    <p>
+        @Html.ActionLink("Create New Observation", "Create", null, new { @class = "button" })
+    </p>
+</div>
+
+<div class="content-image-block">
+    <img src="~/Content/images/costain_logo_small.png" alt="" class="costain-logo"/>
+    <img src="~/Content/images/Target_Zero.png" alt="" class="target_zero-logo" />
+    <img src="~/Content/images/BSIF.jpg" alt="" class="bsif-logo"/>
+</div>

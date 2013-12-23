@@ -1,0 +1,49 @@
+@using Mvc.Mailer
+<html>
+    <head>
+        <link href="@Url.Abs(Url.Content("~/Content/Reset.css"))" rel="stylesheet" />
+        <link href="@Url.Abs(Url.Content("~/Content/Css.css"))" rel="stylesheet" />
+        
+        <style type="text/css">
+            body
+            {
+                padding: 0 1em;
+            }
+
+            h1, .title
+            {
+                font: bold 25px/125% Arial;
+            }
+
+            a, h1, .title
+            {
+                color: #193A94;
+            }
+        </style>
+    </head>
+    <body>
+        <table class="header" style="width: 100%">
+            <tr>
+                <td>
+                    <div class="content-email">
+                        <table class="header-table">
+                            <tr>
+                                <td width="90" style="text-align: center">
+                                    <img src="@Url.Abs(Url.Content("~/Content/images/crossrail_logo_small.png"))" alt="" />
+                                </td>
+                                <td>
+                                    <span class="title">Observations</span>
+                                    <br/>
+                                    Crossrail Observation form Version 2.0
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="content-email">
+            @RenderBody()
+        </div>
+    </body>
+</html>

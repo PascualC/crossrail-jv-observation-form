@@ -1,0 +1,124 @@
+﻿@model Crossrail.ObservationForm.Domain.Observation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Observation</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContractId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContractId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ObservationTypeId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ObservationTypeId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Location)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Location)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ObservationDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ObservationDate)
+    </div>
+    
+    @*<div class="display-label">
+         @Html.DisplayNameFor(model => model.Time)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Time)
+    </div>*@
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ObservationCategoryId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ObservationCategoryId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BriefDescription)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BriefDescription)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OtherCategory)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtherCategory)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ReportedBy)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ReportedBy)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PhoneNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ActionsTaken)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ActionsTaken)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ContractorInvolved)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ContractorInvolved)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FilePath)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FilePath)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyObservationReference)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyObservationReference)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

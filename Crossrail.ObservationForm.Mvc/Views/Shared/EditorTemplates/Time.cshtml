@@ -1,0 +1,8 @@
+﻿@model DateTime?
+
+@* 
+    Helper for outputting a textbox for time that has a "time-spinner" CSS class 
+    so that it can easily be registered with jQuery UI 
+*@
+
+@Html.TextBox("", (Model ?? DateTime.Now).ToString("HH:mm"), new { @class = "time-spinner" })

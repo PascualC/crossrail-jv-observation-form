@@ -1,0 +1,5 @@
+C:\Projects\CostainObservationForm\Main-GitHub\Crossrail.ObservationForm.Domain\bin\Debug\Crossrail.ObservationForm.Domain.dll
+C:\Projects\CostainObservationForm\Main-GitHub\Crossrail.ObservationForm.Domain\bin\Debug\Crossrail.ObservationForm.Domain.pdb
+C:\Projects\CostainObservationForm\Main-GitHub\Crossrail.ObservationForm.Domain\obj\Debug\Crossrail.ObservationForm.Domain.csprojResolveAssemblyReference.cache
+C:\Projects\CostainObservationForm\Main-GitHub\Crossrail.ObservationForm.Domain\obj\Debug\Crossrail.ObservationForm.Domain.dll
+C:\Projects\CostainObservationForm\Main-GitHub\Crossrail.ObservationForm.Domain\obj\Debug\Crossrail.ObservationForm.Domain.pdb

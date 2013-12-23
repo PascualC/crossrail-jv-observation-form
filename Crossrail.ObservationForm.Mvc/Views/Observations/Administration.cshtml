@@ -1,0 +1,94 @@
+﻿@using Crossrail.ObservationForm.Business
+@using Crossrail.ObservationForm.Mvc.Extensions
+
+@model IEnumerable<Crossrail.ObservationForm.Domain.Observation>
+
+@{
+    ViewBag.Title = "AdminDetails";
+}
+
+<table class="table content-block">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ContractId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObservationTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObservationCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ObservationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            Edit
+        </th>
+        @*<th>
+            Delete
+        </th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contract.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObservationType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObservationCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ObservationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @* May need a better way of adding this URL into here long term *@
+                @Url.ContentWithDefault(ObservationService.GetVirtualPath(item.FilePath), "View", new { target="_blank" })
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ObservationId })
+            </td>
+
+            @* TODO: Can we improve this?
+            <td>
+                @using (Html.BeginForm("Delete", "Observations", new { id = item.ObservationId }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Delete" />
+                }
+
+                @Html.ActionLink("Details", "Details", new { id = item.ObservationId }) |
+            </td>
+            *@
+        </tr>
+    }
+
+</table>
+
+    <div class="content-block">
+        @Html.ActionLink("Go Back", "Index", null, new { @class = "button" })
+    </div>

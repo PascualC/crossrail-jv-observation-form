@@ -1,0 +1,231 @@
+﻿html
+{
+    /* 
+       Show scrollbar by default so that we 
+       don't animate oddly when the page is not big enough 
+    */
+    overflow-y: scroll;
+}
+
+body, input, label, textarea
+{
+    font: 13px/120% Arial;
+    color: #535353;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+img 
+{
+    vertical-align: middle;
+}
+
+h1
+{
+    font: bold 25px/125% Arial;
+}
+
+a, h1
+{
+    color: #193A94;
+}
+
+.content-block
+{
+    padding: 1em 0;
+}
+
+.header
+{
+    background-color:#f6f6f6;
+    border: 1px solid #fff;
+    border-width: 1px 0;
+    padding: 1.5em 0;
+    margin-bottom: 1.5em;
+}
+
+.content, .content-email
+{
+    max-width: 990px;
+    margin: auto;
+    padding: 0 1em;
+}
+
+.content-email 
+{
+    max-width: 0;
+}
+
+.meta-description
+{
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Forms */
+
+.field
+{
+    overflow: hidden;
+    padding-bottom: 1em;
+}
+
+.field-hidden
+{
+    display: none;
+}
+
+.field > label
+{
+    width: 240px;
+    float: left;
+    line-height: 120%;
+}
+
+.field > .label-block
+{
+    display: block;
+    float: none;
+}
+
+.field .field-value
+{
+    margin-left: 260px;
+    position: relative;
+}
+
+.field .field-value-block
+{
+    background-color:#f6f6f6;
+    border: 1px solid #ddd;
+    clear: both;
+    margin: 0.5em 0 1em 0;
+    padding: 1.25em;
+}
+
+.field-radio-item
+{
+    display: inline-block;
+    padding-right: 0.3em;
+}
+
+.field-value-block .field-radio-item
+{
+    display: block;
+    padding: 0 0 0.5em 0;
+}
+
+.field .textbox,
+.field .textarea,
+.field .checkbox 
+{
+    border: 1px solid #ddd;
+    margin: 0;
+}
+
+.field .textbox,
+.field .textarea
+{
+    background-color: #fcfcfc;
+    padding: 0.3em;
+    display: inline-block;
+    width: 340px;
+}
+
+.field .textbox-small
+{
+    width: 170px;
+}
+
+.field .textbox, .field .ui-widget
+{
+    vertical-align: middle;
+}
+
+label.error
+{
+    display: block;
+    color: #C00000;
+    padding: 0.5em 0 0 0;
+}
+
+label.error-hidden
+{
+    display: none;
+}
+
+.error, .textbox.error, textarea.error
+{
+    /* 
+        !important is dorm jQuery UI widgets, since they are stubborn 
+        and we always want the border colour. 
+    */
+
+    border-color: #C00000 !important;
+}
+
+/*  
+    Media queries set at 625px as that is just bigger than the
+    form width. When we cannot accommodate the full width of the form,
+    fallback to a single column layout.
+ */
+
+@media screen and (max-width: 625px) {
+
+    /* increase font-size on elements to increase legibility */
+
+    body, input, label, textarea
+    {
+        font-size: 14px;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    img 
+    {
+        max-width: 50%;
+    }
+
+    /* remove width / height from content to ensure it scales to device width */
+
+    .content
+    {
+        margin: auto;
+        width: auto;
+    }
+
+    .field > label
+    {
+        padding-bottom: 1em;
+    }
+
+    .field > label, .field-value
+    {
+        float: none;
+        display: block;
+        width: auto;
+    }
+
+    .field .field-value
+    {
+        margin: 0;
+    }
+
+    /* 
+        Force inputs and required jQuery UI elements to use border box sizing 
+        so that we can use 100% width plus padding. By default inputs do not scale
+        to full width by using 'display:block', and 100% with padding causes the 
+        input to be too big. Use border-box to solve this.
+    */
+
+    .field .textbox, 
+    .field .textbox-small,
+    .field .textarea,
+    .ui-spinner
+    {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        display: block;
+    }
+}

@@ -1,0 +1,69 @@
+@model Crossrail.ObservationForm.Domain.Observation
+
+<p class="content-block">
+    Thank you for your submission. Below is your copy of the observation card:
+</p>
+
+<table class="table">
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ContractId)</td>
+        <td>@Html.DisplayFor(model => model.Contract.Name)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ObservationTypeId)</td>
+        <td>@Html.DisplayFor(model => model.ObservationType.Name)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.Location)</td>
+        <td>@Html.DisplayFor(model => model.Location)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ObservationDate)</td>
+        <td>@Html.DisplayFor(model => model.ObservationDate)</td>
+    </tr>
+    
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.BriefDescription)</td>
+        <td>@Html.DisplayFor(model => model.BriefDescription)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ObservationCategoryId)</td>
+        <td>@Html.DisplayFor(model => model.ObservationCategoryName)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.OtherCategory)</td>
+        <td>@Html.DisplayFor(model => model.OtherCategory)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ReportedBy)</td>
+        <td>@Html.DisplayFor(model => model.ReportedBy)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.PhoneNumber)</td>
+        <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ActionsTaken)</td>
+        <td>@Html.DisplayFor(model => model.ActionsTaken)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.ContractorInvolved)</td>
+        <td>@Html.DisplayFor(model => model.ContractorInvolved)</td>
+    </tr>
+
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.CompanyObservationReference)</td>
+        <td>@Html.DisplayFor(model => model.CompanyObservationReference)</td>
+    </tr>
+
+</table>

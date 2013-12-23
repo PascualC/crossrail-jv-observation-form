@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crossrail - Observation Form</title>
+        
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+        
+        <!-- It is expected that if ASP.Net was used here, we could combine and minify the CSS and javascript assets. -->
+
+        <link href="Styles/Reset.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/Css.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/JQueryUi/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+
+        <script src="Scripts/External/jquery-1.10.2.min.js"></script>
+        <script src="Scripts/External/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="Scripts/External/jquery.validate.js"></script>
+        <script src="Scripts/External/globalize.js"></script>
+
+        <script src="Scripts/jquery-ui.timespinner.js"></script>
+        <script src="Scripts/common.js"></script>
+        <script src="Scripts/forms.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <div class="content">
+                <h1>Observations</h1>
+                <p>
+                    Crossrail Observation from Version 2.0
+                </p>
+            </div>
+        </div>
+        
+        <form action="Submitted.html" method="get" class="content" id="form-observation">
+            <!-- Contract Number -->
+            
+            <div class="field">
+                <label for="contract-number" class="label-block">Contract number:</label>
+                
+                <!-- 
+                    It is expected that these values would be generated from some server side data, with values
+                    that correspond to database IDs rather than string values.
+                -->
+
+                <div class="field-value field-value-block">
+                    
+                    <span class="field-radio-item">
+                        <input type="radio" id="contract-number-1" name="contract-number" value="CV405" required />
+                        <label for="contract-number-1">C405 (Paddington)</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="contract-number-2" name="contract-number" value="CV411" />
+                        <label for="contract-number-2">C411 (Bond Street)</label>
+                    </span>
+                    
+                    <span class="field-radio-item">
+                        <input type="radio" id="contract-number-3" name="contract-number" value="CV411" />
+                        <label for="contract-number-3">C360 (Mile End)</label>
+                    </span>
+
+                    <!--<input type="text" id="contract-number" name="contract-number" class="textbox" placeholder="ex: C405" required />-->
+                </div>
+            </div>
+
+            <!-- Type of Observation -->
+
+            <div class="field">
+                
+                <label>Type of observation:</label>
+                
+                <!-- 
+                    It is expected that these values would be generated from some server side data, with values
+                    that correspond to database IDs rather than string values.
+                -->
+
+                <div class="field-value">
+
+                    <span class="field-radio-item">
+                        <input type="radio" id="observation-good" name="observation-type" value="GoodPractice" required />
+                        <label for="observation-good">Good Practice</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="observation-unsafe" name="observation-type" value="UnsafeCondition" />
+                        <label for="observation-unsafe">Unsafe Condition</label>
+                    </span>
+
+                </div>
+            </div>
+        
+            <!-- Location of observation -->
+
+            <div class="field">
+                <label for="location">Location of observation:</label>
+
+                <div class="field-value">
+                    <input type="text" name="location" id="location" class="textbox" required />
+                </div>
+            </div>
+
+            <!-- Date of observation -->
+
+            <div class="field">
+                <label for="date">Date of observation:</label>
+
+                <div class="field-value">
+                    <input type="text" name="date" id="date" class="textbox date" required />
+                </div>
+            </div>
+            
+            <!-- Time of observation -->
+
+            <div class="field">
+                <label for="date">Time of observation:</label>
+
+                <div class="field-value">
+                    <input type="text" name="time" id="time" class="time-spinner" value="10:00 AM" required />
+                </div>
+            </div>
+
+            <!-- Description of observation -->
+            
+            <div class="field">
+                <label for="description">Brief description of your observation:</label>
+
+                <div class="field-value">
+                    <textarea id="description" name="description" class="textarea" rows="6" placeholder="Enter text here" required></textarea>
+                </div>
+            </div>
+        
+            <!-- Category of Observation -->
+
+            <div class="field" id="observation-category">
+                
+                <label class="label-block">Select category of observation:</label>
+                
+                <!-- 
+                    It is expected that these values would be generated from some server side data, with values
+                    that correspond to database IDs rather than string values.
+                -->
+
+                <div class="field-value field-value-block">
+                    
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_1" name="category" value="Excavation/confined space" required />
+                        <label for="category_1">Excavation/confined space</label>
+                    </span>
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_2" name="category" value="PPE" required />
+                        <label for="category_2">PPE</label>
+                    </span>
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_3" name="category" value="Slips/Trips"/>
+                        <label for="category_3">Slips/Trips</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_4" name="category" value="Health/Well-being"/>
+                        <label for="category_4">Health/Well-being</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_5" name="category" value="Environmental issues"/>
+                        <label for="category_5">Environmental issues</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_6" name="category" value="Plant/equipment(including lifting)"/>
+                        <label for="category_6">Plant/equipment(including lifting)</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_7" name="category" value="Risk of person falling"/>
+                        <label for="category_7">Risk of person falling</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_8" name="category" value="Access/egress"/>
+                        <label for="category_8">Access/egress</label>
+                    </span>
+                
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_9" name="category" value="Electrical hazard"/>
+                        <label for="category_9">Electrical hazard</label>
+                    </span>
+
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_10" name="category" value="Manual handling"/>
+                        <label for="category_10">Manual handling</label>
+                    </span>
+
+                    <span class="field-radio-item">
+                        <input type="radio" id="category_11" name="category" value="Other catagory not mentioned e.g paperwork"/>
+                        <label for="category_11">Other category not mentioned e.g paperwork</label>
+                    </span>
+                </div>
+
+                <!-- Category Area -->
+            
+                <div class="field" id="observation-area">
+                    <label for="category-explanation">Area to explain other category:</label>
+
+                    <div class="field-value">
+                        <textarea class="textarea" id="category-explanation" name="category-explanation" cols="40" rows="6" required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reporter -->
+            
+            <div class="field">
+                <label for="reporter">
+                    Reported by full name: <br/>
+                    <span class="meta-description">(Optional)</span>
+                </label>
+
+                <div class="field-value">
+                    <input type="text" id="reporter" name="reporter" class="textbox" />
+                </div>
+            </div>
+            
+             <!-- Telephone -->
+        
+            <div class="field">
+                <label for="telephone">
+                    Phone number: <br/>
+                    <span class="meta-description">(Optional)</span>
+                </label>
+
+                <div class="field-value">
+                    <input type="text" class="textbox" id="telephone" name="telephone" size="30" value="" />
+                </div>
+            </div>
+        
+            <!-- Actions -->
+            
+            <div class="field">
+                <label for="actions">Actions taken following your observation:</label>
+
+                <div class="field-value">
+                    <textarea class="textarea" id="actions" name="actions" cols="40" rows="6" required></textarea>
+                </div>
+            </div>
+        
+            <!-- Contractor -->
+            
+            <div class="field">
+                <label for="contractor">
+                    If known contractor or contractors involved: 
+                    <span class="meta-description">(Optional)</span>
+                </label>
+
+                <div class="field-value">
+                    <input type="text" class="textbox" id="contractor" name="contractor" size="30" value="" />
+                </div>
+            </div>
+            
+            <!-- Photo -->
+        
+            <div class="field">
+                <label for="photo">Add a photo:</label>
+
+                <div class="field-value">
+                    <input type="file" id="photo" name="photo" />
+                </div>
+            </div>
+            
+            <!-- Email Copy -->
+        
+            <div class="field">
+                <label>
+                    Email me a copy of this observation card: <br />
+                    <span class="meta-description">(Optional)</span>
+                </label>
+
+                <div class="field-value">
+
+                    <span class="field-radio-item">
+                        <input type="checkbox" id="email-yes" name="email" value="Yes" class="checkbox" />
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Email -->
+        
+            <div class="field field-hidden" id="observation-email">
+                <label for="email">Your email:</label>
+
+                <div class="field-value">
+                    <input type="email" class="textbox" id="email" name="email" size="30" value="" placeholder="ex: myname@example.com" required />
+                </div>
+            </div>
+            
+            <!-- Company Reference -->
+
+            <div class="field">
+                <label for="company-reference">
+                    Add your company observation reference: <br />
+                    <span class="meta-description">(Optional)</span>
+                </label>
+
+                <div class="field-value">
+                    <input type="text" class="textbox" id="company-reference" name="company-reference" size="30" />
+                </div>
+            </div>
+            
+            <div class="field">
+                <input type="submit" value="Submit" />
+            </div>
+
+        </form>
+    </body>
+</html>

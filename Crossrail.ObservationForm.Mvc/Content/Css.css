@@ -1,0 +1,349 @@
+﻿html
+{
+    /* 
+       Show scrollbar by default so that we 
+       don't animate oddly when the page is not big enough 
+    */
+    overflow-y: scroll;
+    padding-bottom: 2em;
+}
+
+body, input, label, textarea
+{
+    font: 13px/120% Arial;
+    color: #535353;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+h1, .title
+{
+    font: bold 25px/125% Arial;
+}
+
+a, h1, .title
+{
+    color: #193A94;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.content-block
+{
+    padding: 1em 0;
+}
+
+.content-title 
+{
+    float: left;
+    width: 350px;
+}
+
+.header
+{
+    background-color:#f6f6f6;
+    border: 1px solid #fff;
+    border-width: 1px 0;
+    padding: 1.5em 0;
+    margin-bottom: 1.5em;
+}
+
+.content-image-block {
+
+}
+
+.header-table 
+{
+    width: 100%;
+}
+
+.header-table td
+{
+    padding: 10px;  
+    vertical-align: middle;  
+}
+
+.header .crossrail-logo
+{
+    vertical-align: middle;
+    padding-right: 1em;
+    float: left;
+}
+
+.target_zero-logo, .bsif-logo, .costain-logo
+{
+    padding-right: 1em;
+}
+
+.content, .content-email
+{
+    max-width: 990px;
+    margin: auto;
+    padding: 0 1em;
+    overflow: hidden;
+    display: block;
+}
+
+.content-email 
+{
+    max-width: none;
+}
+
+.content-thanks 
+{
+    font: 18px/120% Arial;
+    max-width: 990px;
+    margin: auto;
+    padding: 0 1em;
+    overflow: hidden;
+}
+
+.meta-description
+{
+    font-style: italic;
+    font-size: 12px;
+}
+
+.content-block 
+{
+    margin: 1.5em 0;
+}
+
+/* Tables */
+
+.table
+{
+    width: 100%;
+}
+
+.table th, .table td 
+{
+    padding: 7px 4px;
+    vertical-align: middle;
+}
+
+.table th 
+{
+    background: #193A94;
+    font-weight:bold;
+    color: #fff;
+}
+
+.table td 
+{
+    border: 1px solid #ccc;
+}
+
+/* Forms */
+
+.field
+{
+    white-space: nowrap;
+    overflow: hidden;
+    padding-bottom: 1em;
+}
+
+.field-hidden
+{
+    display: none;
+}
+
+.field > label
+{
+    width: 240px;
+    float: left;
+    line-height: 120%;
+}
+
+.field > label > em 
+{
+    font-style: italic;
+    display: block;
+    font-size: 12px;
+}
+
+.field > .label-block
+{
+    float: none;
+}
+
+.field .field-value 
+{ 
+    padding-left: 260px;
+}
+
+.time-spinner {
+    white-space: nowrap;
+    float: left;
+}
+
+.field .field-value-block
+{
+    background-color:#f6f6f6;
+    border: 1px solid #ddd;
+    clear: both;
+    margin: 0.5em 0 1em 0;
+    padding: 1.25em;
+}
+
+.field-radio-item
+{
+    display: inline-block;
+    padding-right: 0.3em;
+}
+
+.field-value-block .field-radio-item
+{
+    display: block;
+    padding: 0 0 0.5em 0;
+}
+
+.field .text-box,
+.field .textarea,
+.field .checkbox 
+{
+    border: 1px solid #ddd;
+    margin: 0;
+}
+
+.field .text-box,
+.field .textarea
+{
+    background-color: #fcfcfc;
+    padding: 0.3em;
+    display: inline-block;
+    width: 340px;
+}
+
+.field .textbox-small
+{
+    width: 170px;
+}
+
+.field .text-box, .field .ui-widget
+{
+    vertical-align: middle;
+}
+
+label.error
+{
+    display: block;
+    color: #C00000;
+    padding: 0.5em 0 0 0;
+}
+
+label.error-hidden
+{
+    display: none;
+}
+
+.error, .text-box.error, textarea.error
+{
+    /* 
+        !important is for jQuery UI widgets, since they are stubborn 
+        and we always want the border colour. 
+    */
+
+    border-color: #C00000 !important;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field .field-validation-error {
+    color: #C00000;
+    display: block;
+    padding: 0.5em 0 0 0;
+}
+
+.field .field-validation-valid {
+    display: none;
+}
+
+.field .input-validation-error, 
+.field .ui-widget-error 
+{
+    border-color :#C00000;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #C00000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/*  
+    Media queries set at 625px as that is just bigger than the
+    form width. When we cannot accommodate the full width of the form,
+    fallback to a single column layout.
+ */
+
+@media screen and (max-width: 625px) {
+
+    /* increase font-size on elements to increase legibility */
+
+    body, input, label, textarea
+    {
+        font-size: 14px;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    img 
+    {
+        max-width: 50%;
+    }
+
+    /* remove width / height from content to ensure it scales to device width */
+
+    .content
+    {
+        margin: auto;
+        width: auto;
+    }
+
+    .field > label
+    {
+        padding-bottom: 1em;
+    }
+
+    .field > label, .field-value
+    {
+        float: none;
+        display: block;
+        width: auto;
+    }
+
+    .field .field-value
+    {
+        padding: 0;
+    }
+
+    .field .field-value-block 
+    {
+        padding: 0.75em;
+    }
+
+    /* 
+        Force inputs and required jQuery UI elements to use border box sizing 
+        so that we can use 100% width plus padding. By default inputs do not scale
+        to full width by using 'display:block', and 100% with padding causes the 
+        input to be too big. Use border-box to solve this.
+    */
+
+    .field .text-box, 
+    .field .text-box-small,
+    .field .textarea,
+    .ui-spinner
+    {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+        display: block;
+    }
+}

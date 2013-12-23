@@ -1,0 +1,195 @@
+﻿@using Crossrail.ObservationForm.Mvc.Extensions
+@model Crossrail.ObservationForm.Domain.Observation
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!-- CSRF Token -->
+    @Html.AntiForgeryToken()
+    
+    <!-- Contract Number -->
+    <div class="field">
+
+        <div class="label-block">
+            @Html.FieldLabelFor(model => model.ContractId)
+        </div>
+
+        <div class="field-value field-value-block">
+
+            @Html.RadioButtonGroupFor(
+                model => model.ContractId, 
+                new SelectList(ViewBag.Contracts, "Value", "Text"), 
+                new { @class = "field-radio-item" })
+            
+            @Html.ValidationMessageFor(model => model.ContractId)
+        </div>
+    </div>
+        
+    <!-- Type of Observation -->
+    <div class="field">
+        
+        @Html.FieldLabelFor(model => model.ObservationTypeId)
+
+        <div class="field-value">
+                
+            @Html.RadioButtonGroupFor(
+                model => model.ObservationTypeId, 
+                new SelectList(ViewBag.Types, "Value", "Text"), 
+                new { @class = "field-radio-item" })
+            
+            @Html.ValidationMessageFor(model => model.ObservationTypeId)
+        </div>
+    </div>
+    
+    <!-- Location of observation -->
+    <div class="field">
+
+        @Html.FieldLabelFor(model => model.Location)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.Location)
+            @Html.ValidationMessageFor(model => model.Location)
+        </div>
+    </div>
+
+    <!-- Date of observation -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.ObservationDate)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.ObservationDate)
+            @Html.ValidationMessageFor(model => model.ObservationDate)
+        </div>
+    </div>
+        
+    <!-- Time of observation -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.ObservationTime)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.ObservationTime, "Time")
+            @Html.ValidationMessageFor(model => model.ObservationTime)
+        </div>
+    </div>
+        
+    <!-- Description of observation -->
+    <div class="field">
+
+        @Html.FieldLabelFor(model => model.BriefDescription)
+
+        <div class="field-value">
+            @Html.TextAreaFor(model => model.BriefDescription, new { @class = "textarea", @placeholder = "Enter text here" })
+            @Html.ValidationMessageFor(model => model.BriefDescription)
+        </div>
+    </div>
+        
+    <!-- Category of Observation -->
+    <div class="field" id="observation-category">
+            
+        @Html.FieldLabelFor(model => model.ObservationCategoryId, new { @class = "label-block" })
+
+        <div class="field-value field-value-block">
+            @Html.RadioButtonGroupFor(model => model.ObservationCategoryId,
+                new SelectList(ViewBag.Categories, "Value", "Text"),
+                new { @class = "field-radio-item" })
+            
+            @Html.ValidationMessageFor(model => model.ObservationCategoryId)
+        </div>
+        
+        <!-- Category Area -->        
+        <div class="field" id="observation-area">
+        
+            @Html.FieldLabelFor(model => model.OtherCategory)
+
+            <div class="field-value">
+                @Html.TextAreaFor(model => model.OtherCategory, new { @class = "textarea" })
+                @Html.ValidationMessageFor(model => model.OtherCategory)
+            </div>
+        </div>
+    </div>
+
+    <!-- Reporter -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.ReportedBy)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.ReportedBy)
+            @Html.ValidationMessageFor(model => model.ReportedBy)
+        </div>
+    </div>
+        
+    <!-- Telephone -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.PhoneNumber)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+    </div>
+        
+    <!-- Actions -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.ActionsTaken)
+
+        <div class="field-value">
+            @Html.TextAreaFor(model => model.ActionsTaken, new { @class = "textarea", @placeholder = "Enter text here" })
+            @Html.ValidationMessageFor(model => model.ActionsTaken)
+        </div>
+    </div>
+        
+    <!-- Contractor -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.ContractorInvolved)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.ContractorInvolved)
+            @Html.ValidationMessageFor(model => model.ContractorInvolved)
+        </div>
+    </div>
+        
+    <!-- Photo -->
+    <div class="field">
+        <label for="file">Add a Photo:</label>
+        
+        <div class="field-value">
+            <input type="file" name="file" />
+            @Html.ValidationMessage("file")
+        </div>
+    </div>
+    
+    <!-- Email -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.EmailYesOrNo)
+
+        <div class="field-value">
+            @Html.CheckBoxFor(model => model.EmailYesOrNo, new { value = "True", @class = "checkbox" })
+            @Html.ValidationMessageFor(model => model.EmailYesOrNo)
+        </div>
+    </div>
+    
+    <!-- Email Address -->
+    <div class="field" id="observation-email" style="display: none">
+        @Html.FieldLabelFor(model => model.Email)
+
+        <div class="field-value">
+            @Html.TextBoxFor(model => model.Email, new { @class = "text-box", placeholder = "ex: myname@example.com" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+    </div>
+
+    <!-- Company Reference -->
+    <div class="field">
+        @Html.FieldLabelFor(model => model.CompanyObservationReference)
+
+        <div class="field-value">
+            @Html.EditorFor(model => model.CompanyObservationReference)
+            @Html.ValidationMessageFor(model => model.CompanyObservationReference)
+        </div>
+    </div>
+    
+    <div class="content-block">
+        <input type="submit" value="Submit" class="button" />
+    
+        @Html.ActionLink("Cancel", "Index", null, new { @class = "button" })
+    </div>
+}

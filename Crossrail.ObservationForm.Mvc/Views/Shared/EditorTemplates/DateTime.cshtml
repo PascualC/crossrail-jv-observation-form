@@ -1,0 +1,8 @@
+﻿@model DateTime?
+
+@* 
+    Helper for outputting a textbox for date time that has a "date" CSS class 
+    so that it can easily be registered with jQuery UI 
+*@
+
+@Html.TextBox("", (Model ?? DateTime.Now).ToShortDateString(), new { @class = "text-box single-line date" })
