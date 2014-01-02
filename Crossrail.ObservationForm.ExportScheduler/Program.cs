@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Crossrail.ObservationForm.Business;
+using Elmah;
 
 namespace Crossrail.ObservationForm.ExportScheduler
 {
@@ -9,11 +10,21 @@ namespace Crossrail.ObservationForm.ExportScheduler
     {
         static void Main()
         {
-            MapperConfiguration.RegisterMappings();
-
-            using (UnitOfWork unitOfWork = new UnitOfWork())
+            try
             {
-                unitOfWork.ObservationExportService.Export();
+                MapperConfiguration.RegisterMappings();
+
+                using (var unitOfWork = new UnitOfWork())
+                {
+                    unitOfWork.ObservationExportService.Export();
+                }
+            }
+            catch (Exception ex)
+            {
+                //Don't catch failed logging errors, ensure that logging is fixed.
+
+                ErrorLog.GetDefault(null).Log(new Error(ex));
+                Console.WriteLine("An error has occurred. See elmah for more details");
             }
         }
     }

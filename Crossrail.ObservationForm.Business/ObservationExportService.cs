@@ -115,9 +115,11 @@ namespace Crossrail.ObservationForm.Business
                 MailMessage mailMessage = new MailMessage();
 
                 mailMessage.To.Add(MaillAddressTo);
-                mailMessage.Subject = "Crossrail Observation form Version 2.0 - Export";
                 mailMessage.Attachments.Add(new Attachment(attachmentContentStream, GetExportFilename(), MimeTypeCsv));
 
+                mailMessage.IsBodyHtml = false;
+                mailMessage.Subject = "Crossrail Observation form Version 2.0 - Export";
+                
                 smtpClient.Send(mailMessage);
             }
         }
