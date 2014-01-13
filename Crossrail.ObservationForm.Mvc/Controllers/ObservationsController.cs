@@ -6,11 +6,12 @@ using System.Web.Mvc;
 using Crossrail.ObservationForm.Domain;
 using Crossrail.ObservationForm.Mvc.Mailers;
 using Crossrail.ObservationForm.Mvc.Models;
+using SimpleHoneypot.ActionFilters;
 
 namespace Crossrail.ObservationForm.Mvc.Controllers
 {
     /// <summary>
-    /// NOTE: At present only the create and index methods are used. The edit, details and index
+    /// NOTE: At present only the create and index methods are used. The details and index
     /// views are probably incomplete at this stage and do not work.
     /// </summary>
 
@@ -29,7 +30,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
             return View();
         }
 
-        public ActionResult Administration()
+        private ActionResult Administration()
         {
             IQueryable<Observation> observations = UnitOfWork.ObservationService
                 .GetAll()
@@ -75,6 +76,9 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //Redirect to the Thanks page even when honey-pot fails 
+        [Honeypot(redirectUrl: "/Observations/Thanks")]
+
         public ActionResult Create(Observation model, HttpPostedFileBase file)
         {
             //Extra complex validation is performed within the service to method,
@@ -103,7 +107,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
         //
         // GET: /Observations/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        private ActionResult Edit(int id = 0)
         {
             var observation = UnitOfWork.ObservationService.GetById(id);
 
@@ -121,7 +125,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Observation model,  HttpPostedFileBase file)
+        private ActionResult Edit(int id, Observation model, HttpPostedFileBase file)
         {
             //Assign the ID manually from the URL since we cannot change the default
             //"id" parameter name in the GET without either creating a custom binder + attribute
@@ -147,7 +151,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
         //
         // GET: /Observations/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        private ActionResult Delete(int id = 0)
         {
             Observation observation = UnitOfWork.ObservationService.GetById(id);
 
@@ -161,7 +165,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
 
         // GET: /Observations/Details/5
 
-        public ActionResult Details(int id = 0)
+        private ActionResult Details(int id = 0)
         {
             Observation observation = UnitOfWork.ObservationService.GetById(id);
 
@@ -178,7 +182,7 @@ namespace Crossrail.ObservationForm.Mvc.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        private ActionResult DeleteConfirmed(int id)
         {
             UnitOfWork.ObservationService.Remove(id);
             UnitOfWork.SaveChanges();

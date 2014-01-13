@@ -1,10 +1,16 @@
 ﻿@using Crossrail.ObservationForm.Mvc.Extensions
+@using SimpleHoneypot.HtmlHelpers
 @model Crossrail.ObservationForm.Domain.Observation
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <!-- CSRF Token -->
     @Html.AntiForgeryToken()
+
+    //HoneyPot - Prevents spam by adding a hidden input field for bots.
+    <div class="field field-hidden">
+        @Html.HoneypotInput()
+    </div>
     
     <!-- Contract Number -->
     <div class="field">
