@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Crossrail JV Observation Form</title>
+    <title>Crossrail-jv-observation-form by squareware</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -12,29 +12,34 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+<body>
     <div class="wrapper">
-      <header>
-        <a href="index.html"><h1><img src="images/crossrail_logo_small.png" alt="Crossrail" longdesc="Crossrail"></h1></a>
-        <a href="index.html"><h1>Crossrail JV<br>
-        Observation Form</h1></a>
-        <p></p>
+        <header>
+            <a href="index.html">
+                <h1>
+                    <img src="images/crossrail_logo_small.png" alt="Crossrail" longdesc="Crossrail"></h1>
+            </a>
+            <a href="index.html">
+                <h1>Crossrail Skanska JV<br>
+                    Observation Form</h1>
+            </a>
+            <p></p>
 
-        <p class="view"><a href="https://github.com/csjv/crossrail-jv-observation-form">View the Project on GitHub <small>csjv/crossrail-jv-observation-form</small></a></p>
+            <p class="view"><a href="https://github.com/squareware/crossrail-jv-observation-form">View the Project on GitHub <small>squareware/crossrail-jv-observation-form</small></a></p>
 
-        <p class="view"><a href="documentation.html">View the Project Documentation</a></p>
+            <p class="view"><a href="documentation.html">View the Project Documentation</a></p>
 
 
-        <ul>
-          <li><a href="https://github.com/csjv/crossrail-jv-observation-form/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/csjv/crossrail-jv-observation-form/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/csjv/crossrail-jv-observation-form">View On <strong>GitHub</strong></a></li>
-        </ul>
-        
-        
-      </header>
-      <section>
+            <ul>
+                <li><a href="https://github.com/squareware/crossrail-jv-observation-form/zipball/master">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/squareware/crossrail-jv-observation-form/tarball/master">Download <strong>TAR Ball</strong></a></li>
+                <li><a href="https://github.com/squareware/crossrail-jv-observation-form">View On <strong>GitHub</strong></a></li>
+            </ul>
+
+
+        </header>
+        <section>
             <h1><a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h1>
 
             <h2><a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
@@ -47,6 +52,7 @@
                 <li>Javascript / jQuery / jQuery UI</li>
                 <li>Entity Framework Code First</li>
                 <li>AutoMapper</li>
+                <li>Elmah</li>
             </ul>
 
             <h3><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Set-up</h3>
@@ -75,7 +81,7 @@
                 database as the web site, which can be configured via. the application settings:
             </p>
 
-            <table class="pure-table pure-table-horizontal">
+            <table class="pure-table pure-table-horizontal" style="width:100%; min-width:550px;">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -90,8 +96,18 @@
                     </tr>
 
                     <tr class="pure-table-odd">
-                        <td valign="top">AppSettings/ObservationExportMailAddressTo</td>
+                        <td valign="top">AppSettings/<br />ObservationExportMailAddressTo</td>
                         <td>A comma separated list of email addresses to send the export to.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td valign="top">Elmah/ErrorLog/<br />ApplicationName</td>
+                        <td>
+                            The fully qualified application name of the web application that the server is running on, e.g.
+                            /LM/W3SVC/21/ROOT/ObservationFormMvc. 
+                            <br />
+                            This can be retrieved from the error log page title of the web application (See elmah.axd).
+                        </td>
                     </tr>
 
                     <tr>
@@ -99,8 +115,12 @@
                     </tr>
 
                     <tr>
-                        <td valign="top">ConnectionStrings/ObservationDbContext</td>
+                        <td valign="top">ConnectionStrings/<br /> ObservationDbContext</td>
                         <td>The connection string to the database where the observations are located.</td>
+                    </tr>
+                    <tr>
+                        <td valign="top">ConnectionStrings/<br />ApplicationErrorsConnectionString</td>
+                        <td>The connection string to the database where the Elmah error database is located.</td>
                     </tr>
 
                     <tr class="pure-table-odd">
@@ -117,7 +137,7 @@
 
             <h3><a name="projects" class="anchor" href="#projects"><span class="octicon octicon-link"></span></a>Projects</h3>
 
-            <table class="pure-table pure-table-horizontal">
+            <table class="pure-table pure-table-horizontal" style="width:100%; min-width:550px;">
                 <thead>
                     <tr>
                         <th>Project Name</th>
@@ -159,6 +179,35 @@
             </table>
 
             <p>The Business layer is the main hub within the system.</p>
+
+            <h2><a name="hosted-architecture" class="anchor" href="#hosted-architecture"><span class="octicon octicon-link"></span></a>Hosted Architecture</h2>
+
+            <p>
+                The following architecture displays how the observation form is provided with in its hosting environment.
+            </p>
+
+            <img src="./images/network_architecture.png" />
+
+            <h2><a name="error-logging" class="anchor" href="#error-logging"><span class="octicon octicon-link"></span></a>Error Logging</h2>
+
+            <p>
+                All error logging for the web application and exporter is configured to use Elmah. More information about Elmah can be found 
+                at the project homepage: <a href="https://code.google.com/p/elmah/">https://code.google.com/p/elmah/</a>
+            </p>
+
+            <p>
+                To configure Elmah for deployment you will have to create a database for the error log that can be shared across all applications on
+                your web server. The script to create the database can be found here: 
+                
+                <a href="https://code.google.com/p/elmah/downloads/detail?name=ELMAH-1.2-db-SQLServer.sql">
+                    https://code.google.com/p/elmah/downloads/detail?name=ELMAH-1.2-db-SQLServer.sql
+                </a>
+            </p>
+
+            <p>
+                It is also recommended that your web.config transform for deployment re-instates the Elmah error log. More information can be found
+                in the web application web.config.
+            </p>
 
             <h2><a name="modifications" class="anchor" href="#modifications"><span class="octicon octicon-link"></span></a>Modifications</h2>
 
