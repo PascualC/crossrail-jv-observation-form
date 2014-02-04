@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Crossrail-jv-observation-form by squareware</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <a href="index.html">
+                <h1>
+                    <img src="images/crossrail_logo_small.png" alt="Crossrail" longdesc="Crossrail"></h1>
+            </a>
+            <a href="index.html">
+                <h1>Crossrail JV<br>
+                    Observation Form</h1>
+            </a>
+            <p></p>
+
+            <p class="view"><a href="https://github.com/csjv/crossrail-jv-observation-form">View the Project on GitHub <small>csjv/crossrail-jv-observation-form</small></a></p>
+
+            <p class="view"><a href="documentation.html">View the Application Documentation</a></p>
+            <p class="view"><a href="hosting.html">View the Hosting Documentation</a></p>
+
+
+            <ul>
+                <li><a href="https://github.com/csjv/crossrail-jv-observation-form/zipball/master">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/csjv/crossrail-jv-observation-form/tarball/master">Download <strong>TAR Ball</strong></a></li>
+                <li><a href="https://github.com/csjv/crossrail-jv-observation-form">View On <strong>GitHub</strong></a></li>
+            </ul>
+
+
+        </header>
+        <section>
+            <h1><a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Hosting Documentation</h1>
+
+            <h2><a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+            <h3><a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h3>
+            <p>Before starting, it assumed the reader has some knowledge of the following systems and applications and has them installed following the guidelines for installation:</p>
+
+          <ul>
+                <li>Windows Server 2008 R2 +</li>
+                <li>Internet Information Services (IIS) 7.5 +</li>
+                <li>Microsoft SQL Server 2008 R2 SP2</li>
+                <li>ASP.NET 4.5 +</li>
+            </ul>
+
+          <h3><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Set-up</h3>
+          <h4>IIS</h4>
+          <p>The compiled application should be hosted within an IIS ASP.NET v4.0 (minimum) environment. The application can be run at the root of a site or within a sub application if required.</p>
+          <h4>SQL </h4>
+
+            <p>
+                The application will require a standard SQL 2008 R2 or SQL 2012 installation and following this a database creating for the application.
+            Another database will also be required for the <a href="hosting.html#error-logging">elmah</a> error logging.</p>
+            <p>When the “Crossrail.ObservationForm.Mvc” application is first run, the application database will be populated with the static data required.</p>
+            <h2><a name="hosted-architecture" class="anchor" href="#hosted-architecture"><span class="octicon octicon-link"></span></a>Hosted Architecture</h2>
+            <p> The following architecture displays how the observation form is provided with in its hosting environment. </p>
+            <img src="./images/network_architecture.png" alt="" />
+            <p>&nbsp;</p>
+            <h2><a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Hardware Requirements</h2>
+            <p>The following requirements assume the hosting agent is providing both the web platform and the SQL platform from the same hardware. Minimum reccomendations for both the operating system and SQL Server software can be found within the respective documentation.</p>
+            <p><strong>Processor</strong>—Processor performance depends not only on the clock frequency of the processor, but also on the number of processor cores and the size of the processor cache. The following are the processor requirements:</p>
+          <ul>
+              <li><strong>Minimum:</strong> 1 GHz (for x86 processors) or 1.4 GHz (for x64 processors)</li>
+              <li><strong>Recommended:</strong> 2 GHz or faster</li>
+            </ul>
+            <p><em><strong>RAM</strong>—The following are the RAM requirements:</em></p>
+            <ul>
+              <li><strong>Minimum:</strong> 2 GB</li>
+              <li><strong>Recommended:</strong> 4 GB or more</li>
+            </ul>
+            <p><em><strong>Disk space requirements</strong>—The following are the approximate disk space requirements assuming the system and data partitions reside on the same disk:</em></p>
+            <ul>
+              <li><strong>Minimum:</strong> 60 GB</li>
+              <li><strong>Recommended:</strong> 80 GB or more</li>
+            </ul>
+            <h2><a name="error-logging" class="anchor" href="#error-logging"><span class="octicon octicon-link"></span></a>Error Logging</h2>
+            <p> All error logging for the web application and exporter is configured to use Elmah. More information about Elmah can be found 
+              at the project homepage: <a href="https://code.google.com/p/elmah/">https://code.google.com/p/elmah/</a> </p>
+            <p> To configure Elmah for deployment you will have to create a database for the error log that can be shared across all applications on
+              your web server. The script to create the database can be found here: <a href="assets/ELMAH-1.2-db-SQLServer.sql"> ELMAH-1.2-db-SQLServer.sql </a> </p>
+            <p> It is also recommended that your web.config transform for deployment re-instates the Elmah error log. More information can be found
+              in the web application web.config. </p>
+            <p>&nbsp;</p>
+      </section>
+      <footer>
+      
+        <p>This project is maintained by <a href="https://github.com/3squared">3Squared Ltd</a></p>        
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
