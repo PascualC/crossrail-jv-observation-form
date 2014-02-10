@@ -257,3 +257,13 @@ footer {
 .content-image-block {
   margin-bottom:20px;
 }
+
+.guide-img {
+border-bottom: 1px dashed #ccc;
+padding: 5px;
+}
+
+.guide-step {
+border-top: 4px solid #9E9E9E;
+margin-top: 20px;
+}
